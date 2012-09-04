@@ -6,9 +6,11 @@ class TicketType(models.Model):
     name = models.CharField(blank=True, max_length=100)
     price = models.FloatField()
     limit = models.IntegerField(default=0)
+    currency = models.CharField(default="$",max_length=5)
+
 
     def __unicode__(self):
-        return '%s ($%.2f)' % (self.name,self.price)
+        return '%s (%s%.2f)' % (self.name,self.currency,self.price)
 
 class TicketedEvent(models.Model):
     name = models.CharField(max_length=100)
